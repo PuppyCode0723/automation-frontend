@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -6,13 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import HelloTitle from './HelloTitle';
 import SpeechRecognitionApp from './SpeechRecognitionApp';
 import Text2SpeechApp from './Text2SpeechApp';
+import { Card } from 'primereact/card'
+import { Menu } from './Menu'
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <HelloTitle />, */}
-    <App />,
-    <Text2SpeechApp />,
-    <SpeechRecognitionApp />
+    <Card>
+      {/* <Text2SpeechApp /> */}
+      {/* <SpeechRecognitionApp /> */}
+      <App />
+      <Menu />
+    </Card>
   </React.StrictMode>,
   document.getElementById('root')
 );

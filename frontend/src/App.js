@@ -5,8 +5,8 @@ import formatRelative from "date-fns/formatRelative";
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh",
+  width: "auto",
+  height: "600px",
 }
 
 const options = {
@@ -17,7 +17,7 @@ const options = {
 
 export default function App() {
   const { isLoaded, loadError } = useLoadScript({
-    // googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+    googleMapsApiKey: 'AIzaSyDx6gVihoHMV06njE02Yj_d5Zkas2UXrKs',
     libraries,
   });
 
