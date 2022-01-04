@@ -4,15 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HelloTitle from './HelloTitle';
+import { Menu } from './Menu';
 import SpeechRecognitionApp from './SpeechRecognitionApp';
 import Text2SpeechApp from './Text2SpeechApp';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <HelloTitle />, */}
-    <App />,
-    <Text2SpeechApp />,
-    <SpeechRecognitionApp />
+    {/* <App />, */}
+    <Menu />
+    {/* <Text2SpeechApp />, */}
+    {/* <SpeechRecognitionApp /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
