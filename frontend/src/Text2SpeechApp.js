@@ -159,7 +159,7 @@ class Text2SpeechApp extends Component {
     render() {
         return (
             <div>
-                <CustCalendar strokslist={this.state.strokslist} />
+                {/* <CustCalendar strokslist={this.state.strokslist} /> */}
                 <div>
                     <textarea
                         value={this.state.text}
