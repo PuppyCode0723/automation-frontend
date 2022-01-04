@@ -20,25 +20,27 @@ function CustCalendar(props) {
                 console.log(props.strokslist[i]);
                 setArr(props.strokslist[i])
             }
-            console.log(arr);            
+            console.log(arr);
         }, []
     )
 
     return (
         <div>
+            {console.log("test va: " + props.strokslist[0].start)}
             <FullCalendar
-                plugins={[timeGridPlugin, dayGridPlugin]}
-                initialView='dayGridMonth'
+                plugins={[dayGridPlugin]}
+                contentHeight={600}
                 events={
-                    // [
-                    //     {                                                        
-                    //         description: "維修進場Desc",
-                    //         end: "2022-01-02",
-                    //         start: "2022-01-02",                            
-                    //         title: "進廠維修",
-                    //     }
-                    // ]
-                    arr
+                    [
+                        {
+                            description: "維修進場Desc",
+                            end: new Date(),
+                            start: new Date(),
+                            title: "進廠維修",
+                        }
+                    ]
+
+                    // arr
                 }
             />
         </div>
