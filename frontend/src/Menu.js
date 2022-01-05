@@ -12,26 +12,40 @@ import { Home } from './Home';
 import Maps from './Maps';
 import CustCalendar from './CustCalendar';
 
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Link
+} from "react-router-dom";
+
 export const Menu = () => {
     const [view, setView] = useState("");
 
     const items = [
-        {label: 'Home', icon: 'pi pi-fw pi-home', className: 'p-button-info p-button-lg', onclick: () => { setView("Home") }},
-        {label: 'Calendar', icon: 'pi pi-fw pi-calendar', className: 'p-button-secondary p-button-lg', onclick: () => { setView("Calendar") }},
-        {label: 'Map', icon: 'fas fa-map-marked-alt', className: 'p-button-success p-button-lg', onclick: () => { setView("Map") }}
+        { label: 'Home', icon: 'pi pi-fw pi-home', className: 'p-button-info p-button-lg', onclick: () => { setView("Home") } },
+        { label: 'Calendar', icon: 'pi pi-fw pi-calendar', className: 'p-button-secondary p-button-lg', onclick: () => { setView("Calendar") } },
+        { label: 'Map', icon: 'fas fa-map-marked-alt', className: 'p-button-success p-button-lg', onclick: () => { setView("Map") } }
     ];
 
-    const list = items.map(x => 
-    <div className="p-col">
-        <Button label={x.label} icon={x.icon} className={x.className} onClick={x.onclick} />
-    </div>
+    const list = items.map(x =>
+        <div className="p-col">
+            <Button label={x.label} icon={x.icon} className={x.className} onClick={x.onclick} />
+        </div>
     )
 
     return (
-        <div style={{ padding: '1em'}}>
-            <Card style={{ height: '85vh' }}>
-                <SwitchView view={ view }  />
-            </Card>
+        <div style={{ padding: '1em' }}>
+            {/* <Card style={{ height: '85vh' }}>
+                <SwitchView view={view} />
+            </Card> */}
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' component={Home} />
+                    <Route path='/calendar' component={CustCalendar} />
+                    <Route exact path='/map' component={Maps} />
+                </Routes>
+            </BrowserRouter>
             <div className="p-fluid p-formgrid p-grid p-mt-4">
                 {list}
             </div>
@@ -43,19 +57,19 @@ export const Menu = () => {
 function SwitchView(props) {
     const view = props.view;
     const [showList, setShowList] = useState([
-      {
-        // "start": new Date().getTime(),
-        // "end": new Date().getTime(),
-        // "title": "進廠維修",
-        // "description": "仁愛路192號",
-        // "content": "維修進場",
-        // "textColor": "red",
-        // "allDay": true,
-        // "backgroundColor": "white",
-      }
+        {
+            // "start": new Date().getTime(),
+            // "end": new Date().getTime(),
+            // "title": "進廠維修",
+            // "description": "仁愛路192號",
+            // "content": "維修進場",
+            // "textColor": "red",
+            // "allDay": true,
+            // "backgroundColor": "white",
+        }
     ]);
 
-    switch(view) {
+    switch (view) {
         case "Home":
             return <Home />
         case "Calendar":
@@ -66,6 +80,6 @@ function SwitchView(props) {
             return <Home />
     }
 }
-                
+
 const rootElement = document.getElementById("root");
 ReactDOM.render(<Menu />, rootElement);
