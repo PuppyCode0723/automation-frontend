@@ -35,11 +35,11 @@ function CustCalendar(props) {
                 contentHeight={600}
                 events={
                     [
-                        {
-                            description: "維修進場",
+                        {                            
                             end: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
                             start: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
                             title: "進廠維修",
+                            borderColor: 'red',            
                         },                        
                     ]
 
