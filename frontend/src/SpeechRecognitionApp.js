@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useState } from 'react/cjs/react.development';
+import { Row, Col } from 'react-bootstrap';
 
 // const ENDPOINT = "http://127.0.0.1:5000";
 const ENDPOINT = "https://automation-backend-server.herokuapp.com/";
@@ -68,10 +69,18 @@ function SpeechRecognitionApp() {
         <div>
             <p hidden={true}>SpeechRecognitionApp</p>
             <p hidden={true}>Microphone: {listening ? 'on' : 'off'}</p>
-            <button onClick={getUserInput}> Start </button>
-            <button onClick={() => SpeechRecognition.stopListening()}> Stop </button>
-            <button onClick={() => resetTranscript()} hidden={listening ? '' : 'hidden'}> Reset </button>
-            <p>{transcript}</p>
+            <Row>
+                <Col>
+                    <button onClick={getUserInput}> Start </button>
+                </Col>
+                <Col xs={10}>
+                    <button onClick={() => SpeechRecognition.stopListening()}> Stop </button>
+                </Col>
+                <Col>
+                    <p>{transcript}</p>
+                </Col>
+                <button onClick={() => resetTranscript()} hidden={listening ? '' : 'hidden'}> Reset </button>
+            </Row>
         </div>
     );
 }

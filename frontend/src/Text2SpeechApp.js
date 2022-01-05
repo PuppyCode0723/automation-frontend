@@ -87,7 +87,7 @@ class Text2SpeechApp extends Component {
                 .catch((error) => {
                     console.error(error);
                 });
-        }, 10000);
+        }, 8000);
     }
 
 
