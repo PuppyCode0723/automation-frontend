@@ -9,8 +9,8 @@ function CustCalendar(props) {
         start: '2022-01-01',
         end: '2022-01-01',
         title: '測試範例',
-        textColor : 'white'
-    },{
+        textColor: 'white'
+    }, {
 
     }]);
 
@@ -36,15 +36,16 @@ function CustCalendar(props) {
                 events={
                     [
                         {
-                            description: "維修進場Desc",
-                            end: new Date(),
-                            start: new Date(),
+                            description: "維修進場",
+                            end: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
+                            start: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
                             title: "進廠維修",
-                        }
+                        },                        
                     ]
 
                     // arr
                 }
+                displayEventTime={false}
             />
         </div>
     )
