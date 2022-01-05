@@ -4,17 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HelloTitle from './HelloTitle';
-import { Menu } from './Menu';
 import SpeechRecognitionApp from './SpeechRecognitionApp';
 import Text2SpeechApp from './Text2SpeechApp';
+
+import { Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <HelloTitle />, */}
-    {/* <App />, */}
-    <Menu />
-    {/* <Text2SpeechApp />, */}
-    {/* <SpeechRecognitionApp /> */}
+    <App />,
+    <Row>
+      <Col>
+        <Text2SpeechApp />,
+      </Col>
+      <Col>
+        <SpeechRecognitionApp />
+      </Col>
+    </Row>
+
+
   </React.StrictMode>,
   document.getElementById('root')
 );

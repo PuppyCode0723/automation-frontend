@@ -35,23 +35,21 @@ function SpeechRecognitionApp() {
                 // 指定是否要持續監聽使用者是否有講話
                 // SpeechRecognition.startListening({ continuous: false });
 
-                console.log("transcript: " + transcript);
+                // console.log("transcript: " + transcript);
 
                 // PUT data to server
+                console.log("Transcript: " + transcript);
                 setTimeout(() => {
-                    // if listening is false => 使用者講完後才會把資料傳到後端進行判斷
-                    if (!listening) {
-                        fetch(ENDPOINT + "/connection", {
-                            method: 'PUT',
-                            body: JSON.stringify({ data: transcript }),
-                            headers: new Headers({
-                                'Content-Type': 'application/json'
-                            })
-                        }).then(res => res.json())
-                            .catch(error => console.error('Error: ', error))
-                            .then(resetTranscript())
-                            .then(response => console.log('Success: ', response));
-                    }
+                    fetch(ENDPOINT + "/connection", {
+                        method: 'PUT',
+                        body: JSON.stringify({ data: transcript }),
+                        headers: new Headers({
+                            'Content-Type': 'application/json'
+                        })
+                    }).then(res => res.json())
+                        .catch(error => console.error('Error: ', error))
+                        .then(resetTranscript())
+                        .then(response => console.log('Success: ', response));
                 }, 3000);
 
                 // 重置transcript
@@ -68,12 +66,11 @@ function SpeechRecognitionApp() {
 
     return (
         <div>
-
             <p hidden={true}>SpeechRecognitionApp</p>
-            <p>Microphone: {listening ? 'on' : 'off'}</p>
+            <p hidden={true}>Microphone: {listening ? 'on' : 'off'}</p>
             <button onClick={getUserInput}> Start </button>
             <button onClick={() => SpeechRecognition.stopListening()}> Stop </button>
-            <button hidden={true} onClick={() => resetTranscript()} hidden={listening ? '' : 'hidden'}> Reset </button>
+            <button onClick={() => resetTranscript()} hidden={listening ? '' : 'hidden'}> Reset </button>
             <p>{transcript}</p>
         </div>
     );

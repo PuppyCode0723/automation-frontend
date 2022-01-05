@@ -5,7 +5,7 @@ import CustCalendar from './CustCalendar';
 
 // import Speech from 'react-speech';
 
-// 
+
 // const ENDPOINT = "http://127.0.0.1:5000";
 const ENDPOINT = "https://automation-backend-server.herokuapp.com/";
 
@@ -33,6 +33,7 @@ class Text2SpeechApp extends Component {
                     // "backgroundColor":"white",                    
                 }
             ],
+            usedSentences: []
         };
 
         this.getData = this.getData.bind(this);
@@ -46,10 +47,16 @@ class Text2SpeechApp extends Component {
     componentDidUpdate() {
         console.log("componentDidUpdate");
         if (this.state.text !== this.state.prevText) {
-            console.log("Previous text: " + this.state.prevText);
-            console.log("Current text: " + this.state.text);
-            this.setState({ prevText: this.state.text });
-            this.speak();
+            if (!this.state.usedSentences.includes(this.state.text)) {
+                console.log("Previous text: " + this.state.prevText);
+                console.log("Current text: " + this.state.text);
+                this.setState(previousState => ({
+                    usedSentences: [...previousState.usedSentences, this.state.text]
+                }));
+                console.log("Usedsentences: " + this.state.usedSentences);
+                this.setState({ prevText: this.state.text });
+                this.speak();
+            }
         }
     }
 
@@ -74,6 +81,8 @@ class Text2SpeechApp extends Component {
                         console.log(responseData['date']);
                         console.log(this.state.strokslist);
                     }
+
+
                 })
                 .catch((error) => {
                     console.error(error);

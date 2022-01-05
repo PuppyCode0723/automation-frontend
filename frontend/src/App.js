@@ -11,7 +11,7 @@ import CustCalendar from './CustCalendar';
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100vw",
-  height: "100vh",
+  height: "90vh",
 }
 
 const options = {
@@ -22,7 +22,7 @@ const options = {
 
 export default function App() {
   const { isLoaded, loadError } = useLoadScript({
-    // googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+    googleMapsApiKey: "AIzaSyCCwh-DhvYcKEE64hqIbCFQa75ZvP1DghM",
     libraries,
   });
 
