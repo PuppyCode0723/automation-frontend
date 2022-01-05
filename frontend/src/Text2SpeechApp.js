@@ -74,8 +74,6 @@ class Text2SpeechApp extends Component {
                         console.log(responseData['date']);
                         console.log(this.state.strokslist);
                     }
-
-
                 })
                 .catch((error) => {
                     console.error(error);

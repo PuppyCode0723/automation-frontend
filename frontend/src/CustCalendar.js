@@ -10,8 +10,6 @@ function CustCalendar(props) {
         end: '2022-01-01',
         title: '測試範例',
         textColor: 'white'
-    }, {
-
     }]);
 
     useEffect(
@@ -29,18 +27,18 @@ function CustCalendar(props) {
 
     return (
         <div>
-            {console.log("test va: " + props.strokslist[0].start)}
+            {/* {console.log("test va: " + props.strokslist[0].start)} */}
             <FullCalendar
                 plugins={[dayGridPlugin]}
                 contentHeight={600}
                 events={
                     [
-                        {                            
+                        {
                             end: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
                             start: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
                             title: "進廠維修",
-                            borderColor: 'red',            
-                        },                        
+                            borderColor: 'red',
+                        },
                     ]
 
                     // arr
