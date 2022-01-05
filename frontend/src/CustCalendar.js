@@ -8,7 +8,10 @@ function CustCalendar(props) {
     const [arr, setArr] = useState([{
         start: '2022-01-01',
         end: '2022-01-01',
-        title: '測試範例'
+        title: '測試範例',
+        textColor : 'white'
+    },{
+
     }]);
 
     useEffect(

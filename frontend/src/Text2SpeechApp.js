@@ -5,9 +5,9 @@ import CustCalendar from './CustCalendar';
 
 // import Speech from 'react-speech';
 
-
-const ENDPOINT = "http://127.0.0.1:5000";
-// const ENDPOINT = "https://automation-backend-server.herokuapp.com/";
+// 
+// const ENDPOINT = "http://127.0.0.1:5000";
+const ENDPOINT = "https://automation-backend-server.herokuapp.com/";
 
 class Text2SpeechApp extends Component {
     constructor(props) {
@@ -162,19 +162,19 @@ class Text2SpeechApp extends Component {
                 {/* <CustCalendar strokslist={this.state.strokslist} /> */}
                 <div>
                     <textarea
+                        hidden={true}
                         value={this.state.text}
                         onChange={this.handleTextChange}
                         cols="40"
                         rows="2"
                     />
-                    <br />
                     <button disabled={this.state.isSpeaking} onClick={this.inspection}>
                         車子自主檢查
                     </button>
-                    <button disabled={this.state.isSpeaking} onClick={this.speak}>
+                    <button hidden={true} disabled={this.state.isSpeaking} onClick={this.speak}>
                         Text speak
                     </button>
-                    <button disabled={!this.state.isSpeaking} onClick={this.stop}>
+                    <button hidden={true} disabled={!this.state.isSpeaking} onClick={this.stop}>
                         Text stop
                     </button>
                     <button hidden={true} onClick={this.getData}>

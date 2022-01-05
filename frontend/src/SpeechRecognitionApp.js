@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useState } from 'react/cjs/react.development';
 
-const ENDPOINT = "http://127.0.0.1:5000";
-// const ENDPOINT = "https://automation-backend-server.herokuapp.com/";
+// const ENDPOINT = "http://127.0.0.1:5000";
+const ENDPOINT = "https://automation-backend-server.herokuapp.com/";
 
 function SpeechRecognitionApp() {
     const [message, setMessage] = useState('');
@@ -39,17 +39,21 @@ function SpeechRecognitionApp() {
 
                 // PUT data to server
                 setTimeout(() => {
-                    fetch(ENDPOINT + "/connection", {
-                        method: 'PUT',
-                        body: JSON.stringify({ data: transcript }),
-                        headers: new Headers({
-                            'Content-Type': 'application/json'
-                        })
-                    }).then(res => res.json())
-                        .catch(error => console.error('Error: ', error))
-                        .then(resetTranscript())
-                        .then(response => console.log('Success: ', response));
+                    // if listening is false => 使用者講完後才會把資料傳到後端進行判斷
+                    if (!listening) {
+                        fetch(ENDPOINT + "/connection", {
+                            method: 'PUT',
+                            body: JSON.stringify({ data: transcript }),
+                            headers: new Headers({
+                                'Content-Type': 'application/json'
+                            })
+                        }).then(res => res.json())
+                            .catch(error => console.error('Error: ', error))
+                            .then(resetTranscript())
+                            .then(response => console.log('Success: ', response));
+                    }
                 }, 3000);
+
                 // 重置transcript
                 // resetTranscript();
             }
@@ -64,11 +68,12 @@ function SpeechRecognitionApp() {
 
     return (
         <div>
-            <p>SpeechRecognitionApp</p>
+
+            <p hidden={true}>SpeechRecognitionApp</p>
             <p>Microphone: {listening ? 'on' : 'off'}</p>
             <button onClick={getUserInput}> Start </button>
             <button onClick={() => SpeechRecognition.stopListening()}> Stop </button>
-            <button onClick={() => resetTranscript()} hidden={listening ? '' : 'hidden'}> Reset </button>
+            <button hidden={true} onClick={() => resetTranscript()} hidden={listening ? '' : 'hidden'}> Reset </button>
             <p>{transcript}</p>
         </div>
     );

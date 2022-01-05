@@ -18,12 +18,12 @@ const mapContainerStyle = {
 const options = {
   enableHighAccuracy: true,
   timeout: 5000,
-  maximumAge: 0
+  maximumAge: 10000
 };
 
 export default function App() {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyDx6gVihoHMV06njE02Yj_d5Zkas2UXrKs',
+    // googleMapsApiKey: 'AIzaSyDx6gVihoHMV06njE02Yj_d5Zkas2UXrKs',
     libraries,
   });
 
@@ -100,7 +100,6 @@ export default function App() {
               position={{ lat: marker.lat, lng: marker.lng }}
             />))}
         </GoogleMap>
-        
 
         <Modal show={show} onHide={handleClose} fullscreen={true}>
           <Modal.Header closeButton>

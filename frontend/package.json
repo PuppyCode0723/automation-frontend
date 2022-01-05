@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "https://maps.googleapis.com/maps/api/js",
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
@@ -11,6 +13,9 @@
     "@fullcalendar/react": "^5.10.1",
     "@fullcalendar/timegrid": "^5.10.1",
     "@googlemaps/react-wrapper": "^1.1.16",
+    "@mui/icons-material": "^5.2.5",
+    "@mui/material": "^5.2.7",
+    "@mui/styled-engine-sc": "^5.1.0",
     "@react-google-maps/api": "^2.7.0",
     "@speechly/speech-recognition-polyfill": "^1.1.0",
     "@testing-library/jest-dom": "^5.16.1",
@@ -32,6 +37,7 @@
     "react-speech": "^1.0.2",
     "react-speech-recognition": "^3.9.0",
     "socket.io-client": "^2.3.1",
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
