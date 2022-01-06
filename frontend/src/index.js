@@ -7,7 +7,7 @@ import HelloTitle from './HelloTitle';
 import SpeechRecognitionApp from './SpeechRecognitionApp';
 import Text2SpeechApp from './Text2SpeechApp';
 
-import { Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
@@ -22,6 +22,7 @@ ReactDOM.render(
         <SpeechRecognitionApp />
       </Col>
     </Row>
+
 
 
   </React.StrictMode>,

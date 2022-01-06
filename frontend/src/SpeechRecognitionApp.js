@@ -29,39 +29,38 @@ function SpeechRecognitionApp() {
     } = useSpeechRecognition({ commands });
 
     useEffect(() => {
-        if (!browserSupportsSpeechRecognition) {
-            return <span>Browser doesn't support speech recognition.</span>
-        } else {
-            if (transcript !== '') {
-                // 指定是否要持續監聽使用者是否有講話
-                // SpeechRecognition.startListening({ continuous: false });
-
-                // console.log("transcript: " + transcript);
-
-                // PUT data to server
-                console.log("Transcript: " + transcript);
-                setTimeout(() => {
-                    fetch(ENDPOINT + "/connection", {
-                        method: 'PUT',
-                        body: JSON.stringify({ data: transcript }),
-                        headers: new Headers({
-                            'Content-Type': 'application/json'
-                        })
-                    }).then(res => res.json())
-                        .catch(error => console.error('Error: ', error))
-                        .then(resetTranscript())
-                        .then(response => console.log('Success: ', response));
-                }, 3000);
-
-                // 重置transcript
-                // resetTranscript();
-            }
-        }
-    }, [transcript])
+    })
 
     const getUserInput = () => {
         SpeechRecognition.startListening();
         console.log("回答是: " + transcript);
+    }
+
+    const putData = () => {
+        if (transcript !== '') {
+            // 指定是否要持續監聽使用者是否有講話
+            // SpeechRecognition.startListening({ continuous: false });
+
+            // console.log("transcript: " + transcript);
+
+            // PUT data to server
+            console.log("Transcript: " + transcript);
+            setTimeout(() => {
+                fetch(ENDPOINT + "/connection", {
+                    method: 'PUT',
+                    body: JSON.stringify({ data: transcript }),
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
+                }).then(res => res.json())
+                    .catch(error => console.error('Error: ', error))
+                    .then(resetTranscript())
+                    .then(response => console.log('Success: ', response));
+            }, 3000);
+
+            // 重置transcript
+            // resetTranscript();
+        }
     }
 
 
@@ -69,6 +68,7 @@ function SpeechRecognitionApp() {
         <div>
             <p hidden={true}>SpeechRecognitionApp</p>
             <p hidden={true}>Microphone: {listening ? 'on' : 'off'}</p>
+            {!listening ? () => putData() : ""}
             <Row>
                 <Col>
                     <button onClick={getUserInput}> Start </button>
@@ -79,7 +79,7 @@ function SpeechRecognitionApp() {
                 <Col>
                     <p>{transcript}</p>
                 </Col>
-                <button onClick={() => resetTranscript()} hidden={listening ? '' : 'hidden'}> Reset </button>
+                <button onClick={() => resetTranscript()} hidden={true}> Reset </button>
             </Row>
         </div>
     );
