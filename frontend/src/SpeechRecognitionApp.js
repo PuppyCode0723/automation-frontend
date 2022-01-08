@@ -37,6 +37,7 @@ function SpeechRecognitionApp() {
     }
 
     const putData = () => {
+        console.log("puData");
         if (transcript !== '') {
             // 指定是否要持續監聽使用者是否有講話
             // SpeechRecognition.startListening({ continuous: false });
@@ -68,7 +69,7 @@ function SpeechRecognitionApp() {
         <div>
             <p hidden={true}>SpeechRecognitionApp</p>
             <p hidden={true}>Microphone: {listening ? 'on' : 'off'}</p>
-            {!listening ? () => putData() : ""}
+            {!listening ? putData() : ""}
             <Row>
                 <Col>
                     <button onClick={getUserInput}> Start </button>

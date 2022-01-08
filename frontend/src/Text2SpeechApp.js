@@ -85,7 +85,7 @@ class Text2SpeechApp extends Component {
                 .catch((error) => {
                     console.error(error);
                 });
-        }, 8000);
+        }, 2000);
     }
 
 
@@ -93,25 +93,28 @@ class Text2SpeechApp extends Component {
         this._speech = new SpeechSynthesisUtterance();
         this._speech.onend = () => this.setState({ isSpeaking: false });
 
-        // 載入語音包完畢後使用此方法
-        let voices = window.speechSynthesis.getVoices();
-        if (voices.length !== 0) {
-            for (let index = 0; index < voices.length; index++) {
-                if (voices[index].name === "Google 國語（臺灣）") { //Chrome專用
-                    this._speech.voice = voices[index];
-                    break;
-                } else if (voices[index].name === "Microsoft HsiaoChen Online (Natural) - Chinese (Taiwan)") {  //HsiaoChen (Neural) - 曉臻 (MS Edge專用)
-                    this._speech.voice = voices[index];
-                    break;
+
+        if (!this.state.isSpeaking) {
+            // 載入語音包完畢後使用此方法
+            let voices = window.speechSynthesis.getVoices();
+            if (voices.length !== 0) {
+                for (let index = 0; index < voices.length; index++) {
+                    if (voices[index].name === "Google 國語（臺灣）") { //Chrome專用
+                        this._speech.voice = voices[index];
+                        break;
+                    } else if (voices[index].name === "Microsoft HsiaoChen Online (Natural) - Chinese (Taiwan)") {  //HsiaoChen (Neural) - 曉臻 (MS Edge專用)
+                        this._speech.voice = voices[index];
+                        break;
+                    }
                 }
+
+                this._speech.text = this.state.text;
+                this._speech.lang = this.state.lang;
+                this.setState({ isSpeaking: true });
+
+                window.speechSynthesis.cancel();
+                window.speechSynthesis.speak(this._speech);
             }
-
-            this._speech.text = this.state.text;
-            this._speech.lang = this.state.lang;
-            this.setState({ isSpeaking: true });
-
-            window.speechSynthesis.cancel();
-            window.speechSynthesis.speak(this._speech);
         }
 
         // 第一次載入時載入語音包後才開始說話
