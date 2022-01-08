@@ -6,9 +6,13 @@ import { Component, useEffect, useState } from 'react/cjs/react.development';
 
 function CustCalendar(props) {
     const [arr, setArr] = useState([{
-        start: '2022-01-01',
-        end: '2022-01-01',
+        start: '2022-01-08',
+        end: '2022-01-08',
         title: '測試範例'
+    }, {
+        title: 'Test 2',
+        start: '2022-01-07',
+        end: '2022-01-07'
     }]);
 
     useEffect(
@@ -17,10 +21,11 @@ function CustCalendar(props) {
                 if (props.strokslist[i].start == undefined || props.strokslist[i].start == null) {
                     continue;
                 }
-                console.log(props.strokslist[i]);
-                setArr(props.strokslist[i])
+                // console.log(props.strokslist[i]);
+                // setArr(props.strokslist[i])
+                setArr([...arr, props.strokslist[i]]);
             }
-            console.log(arr);
+            console.log("array: " + arr);
         }, []
     )
 
@@ -39,9 +44,9 @@ function CustCalendar(props) {
                             title: "進廠維修",
                         }
                     ]
-
                     // arr
                 }
+                displayEventTime={false}
             />
         </div>
     )

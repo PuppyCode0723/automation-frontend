@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useState } from 'react/cjs/react.development';
-import { Row, Col } from 'react-bootstrap';
+import { Button, Row, Col, Container } from 'react-bootstrap';
 
 // const ENDPOINT = "http://127.0.0.1:5000";
 const ENDPOINT = "https://automation-backend-server.herokuapp.com/";
@@ -70,19 +70,23 @@ function SpeechRecognitionApp() {
             <p hidden={true}>SpeechRecognitionApp</p>
             <p hidden={true}>Microphone: {listening ? 'on' : 'off'}</p>
             {!listening ? putData() : ""}
-            <Row>
-                <Col>
-                    <button onClick={getUserInput}> Start </button>
-                </Col>
-                <Col xs={10}>
-                    <button onClick={() => SpeechRecognition.stopListening()}> Stop </button>
-                </Col>
-                <Col>
-                    <p>{transcript}</p>
-                </Col>
-                <button onClick={() => resetTranscript()} hidden={true}> Reset </button>
-            </Row>
-        </div>
+            <Container>
+                <Row>
+                    <Col>
+                        <Button variant="outline-primary" onClick={getUserInput}>Speak</Button>
+                    </Col>
+                    {/* <Col xs={10}>
+                        <button onClick={() => SpeechRecognition.stopListening()}> Stop </button>
+                    </Col> */}
+                    <Col md={10}>
+                        {transcript}
+                    </Col>
+                    <Col>
+                        <button onClick={() => resetTranscript()} hidden={true}> Reset </button>
+                    </Col>
+                </Row>
+            </Container>
+        </div >
     );
 }
 

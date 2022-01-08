@@ -2,6 +2,7 @@
 import React from 'react';
 import { Component } from 'react/cjs/react.development';
 import CustCalendar from './CustCalendar';
+import { Button, Row, Col } from 'react-bootstrap';
 
 // import Speech from 'react-speech';
 
@@ -176,9 +177,10 @@ class Text2SpeechApp extends Component {
                         cols="40"
                         rows="2"
                     />
-                    <button disabled={this.state.isSpeaking} onClick={this.inspection}>
+
+                    <Button variant="danger" marginLeft={"auto"} disabled={this.state.isSpeaking} onClick={this.inspection}>
                         車子自主檢查
-                    </button>
+                    </Button>
                     <button hidden={true} disabled={this.state.isSpeaking} onClick={this.speak}>
                         Text speak
                     </button>

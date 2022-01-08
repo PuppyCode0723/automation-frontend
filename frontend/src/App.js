@@ -11,7 +11,7 @@ import CustCalendar from './CustCalendar';
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100vw",
-  height: "90vh",
+  height: "86vh",
 }
 
 const options = {
@@ -37,8 +37,8 @@ export default function App() {
   // Calendar event
   const [showList, setShowList] = useState([
     {
-      // "start": new Date().getTime(),
-      // "end": new Date().getTime(),
+      // "start": '2022-01-08',
+      // "end": '2022-01-08',
       // "title": "進廠維修",
       // "description": "仁愛路192號",
       // "content": "維修進場",

@@ -13,16 +13,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ReactDOM.render(
   <React.StrictMode>
     {/* <HelloTitle />, */}
-    <App />,
     <Row>
       <Col>
         <Text2SpeechApp />,
       </Col>
       <Col>
-        <SpeechRecognitionApp />
+        <SpeechRecognitionApp />,
       </Col>
     </Row>
-
+    <App />,
 
 
   </React.StrictMode>,
