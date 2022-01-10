@@ -6,7 +6,7 @@ import { Button, Row, Col, Container } from 'react-bootstrap';
 // const ENDPOINT = "http://127.0.0.1:5000";
 const ENDPOINT = "https://automation-backend-server.herokuapp.com/";
 
-function SpeechRecognitionApp() {
+function SpeechRecognitionApp(props) {
     const [message, setMessage] = useState('');
     const [prevMessage, setPrevmessage] = useState('');
 
@@ -34,6 +34,7 @@ function SpeechRecognitionApp() {
     const getUserInput = () => {
         SpeechRecognition.startListening();
         console.log("回答是: " + transcript);
+        props.onClick();
     }
 
     const putData = () => {

@@ -4,6 +4,8 @@ import formatRelative from "date-fns/formatRelative";
 import { Button, Row, Col, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
+import SpeechRecognitionApp from './SpeechRecognitionApp';
+import Text2SpeechApp from './Text2SpeechApp';
 
 import CustCalendar from './CustCalendar';
 
@@ -36,16 +38,17 @@ export default function App() {
 
   // Calendar event
   const [showList, setShowList] = useState([
-    {
-      // "start": '2022-01-08',
-      // "end": '2022-01-08',
-      // "title": "進廠維修",
-      // "description": "仁愛路192號",
-      // "content": "維修進場",
-      // "textColor": "red",
-      // "allDay": true,
-      // "backgroundColor": "white",
-    }
+    {}
+    // {
+    //   "start": '2022-01-08',
+    //   "end": '2022-01-08',
+    //   "title": "進廠維修",
+    //   "description": "仁愛路192號",
+    //   "content": "維修進場",
+    //   "textColor": "red",
+    //   "allDay": true,
+    //   "backgroundColor": "white",
+    // }
   ]);
 
   const onMapClick = React.useCallback((event) => {
@@ -56,6 +59,18 @@ export default function App() {
       time: new Date()
     },
     ]);
+  }, []);
+
+  const speechRecognitionOnClick = React.useCallback((event) => {
+    setShowList([
+      {
+        description: "維修進場Desc",
+        end: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)),
+        start: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)),
+        title: "進廠維修",
+      } 
+    ]);
+    console.log("speechRecognitionOnClick", showList);
   }, []);
 
   const mapRef = React.useRef();
@@ -85,34 +100,44 @@ export default function App() {
 
   return (
     <div>
-      <Row className="mx-0">
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={15}
-          center={defaultPosition}
-          onClick={onMapClick}
-          onLoad={onMapLoad}
-        >
-          {markers.map((marker) => (
-            <Marker
-              key={marker.time.toISOString()}
-              position={{ lat: marker.lat, lng: marker.lng }}
-            />))}
-        </GoogleMap>
-        <Button as={Col} variant="primary">Home</Button>
-        <Button as={Col} variant="secondary" onClick={handleShow} className="mx-2">Calendar</Button>
-        <Button as={Col} variant="success">Event</Button>
-
-        <Modal show={show} onHide={handleClose} fullscreen={true}>
-          <Modal.Header closeButton>
-            <Modal.Title>Calendar</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <CustCalendar strokslist={showList} />
-          </Modal.Body>
-          <Modal.Footer></Modal.Footer>
-        </Modal>
+      <Row>
+        <Col>
+          <Text2SpeechApp />
+        </Col>
+        <Col>
+          <SpeechRecognitionApp onClick={speechRecognitionOnClick} />
+        </Col>
       </Row>
+      <div>
+        <Row className="mx-2 my-3">
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={15}
+            center={defaultPosition}
+            onClick={onMapClick}
+            onLoad={onMapLoad}
+          >
+            {markers.map((marker) => (
+              <Marker
+                key={marker.time.toISOString()}
+                position={{ lat: marker.lat, lng: marker.lng }}
+              />))}
+          </GoogleMap>
+          <Button as={Col} variant="primary">Home</Button>
+          <Button as={Col} variant="secondary" onClick={handleShow} className="mx-2">Calendar</Button>
+          <Button as={Col} variant="success">Event</Button>
+
+          <Modal show={show} onHide={handleClose} fullscreen={true}>
+            <Modal.Header closeButton>
+              <Modal.Title>Calendar</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <CustCalendar strokslist={showList} />
+            </Modal.Body>
+            <Modal.Footer></Modal.Footer>
+          </Modal>
+        </Row>
+      </div>
     </div>
   )
 }

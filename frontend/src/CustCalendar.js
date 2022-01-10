@@ -5,6 +5,7 @@ import React, { PureComponent, createRef } from "react";
 import { Component, useEffect, useState } from 'react/cjs/react.development';
 
 function CustCalendar(props) {
+    console.log("strokslist", props.strokslist);
     const [arr, setArr] = useState([{
         start: '2022-01-08',
         end: '2022-01-08',
@@ -36,14 +37,15 @@ function CustCalendar(props) {
                 plugins={[dayGridPlugin]}
                 contentHeight={600}
                 events={
-                    [
-                        {
-                            description: "維修進場Desc",
-                            end: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)),
-                            start: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)),
-                            title: "進廠維修",
-                        }
-                    ]
+                    props.strokslist
+                    // [
+                    //     {
+                    //         description: "維修進場Desc",
+                    //         end: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)),
+                    //         start: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)),
+                    //         title: "進廠維修",
+                    //     }
+                    // ]
                     // arr
                 }
                 displayEventTime={false}
