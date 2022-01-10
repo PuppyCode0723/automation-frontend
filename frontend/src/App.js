@@ -70,6 +70,23 @@ export default function App() {
         title: "進廠維修",
       } 
     ]);
+    setMarkers([
+      {
+        time: new Date(),
+        lat: 25.043159497598104,
+        lng: 121.56703883686964,
+      },
+      {
+        time: new Date(),
+        lat: 25.043814984512316,
+        lng: 121.57192250303466,
+      },
+      {
+        time: new Date(),
+        lat: 25.034655078918803,
+        lng: 121.57635280451973,
+      }
+    ])
     console.log("speechRecognitionOnClick", showList);
   }, []);
 
