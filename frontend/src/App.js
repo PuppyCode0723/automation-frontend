@@ -70,24 +70,38 @@ export default function App() {
         title: "進廠維修",
       } 
     ]);
-    setMarkers([
-      {
-        time: new Date(),
-        lat: 25.043159497598104,
-        lng: 121.56703883686964,
-      },
-      {
-        time: new Date(),
-        lat: 25.043814984512316,
-        lng: 121.57192250303466,
-      },
-      {
-        time: new Date(),
-        lat: 25.034655078918803,
-        lng: 121.57635280451973,
-      }
-    ])
-    console.log("speechRecognitionOnClick", showList);
+    console.log("defaultPosition",defaultPosition)
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const currentPos = {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+        };
+        setMarkers([
+          {
+            time: new Date(new Date().getTime()),
+            lat: currentPos.lat + (Math.random() - 0.5) * 0.02,
+            lng: currentPos.lng + (Math.random() - 0.5) * 0.03,
+          },
+          {
+            time: new Date(new Date().getTime() + 1000),
+            lat: currentPos.lat + (Math.random() - 0.5) * 0.02,
+            lng: currentPos.lng + (Math.random() - 0.5) * 0.03,
+          },
+          {
+            time: new Date(new Date().getTime() + 2000),
+            lat: currentPos.lat + (Math.random() - 0.5) * 0.02,
+            lng: currentPos.lng + (Math.random() - 0.5) * 0.03,
+          },
+          {
+            time: new Date(new Date().getTime() + 3000),
+            lat: currentPos.lat + (Math.random() - 0.5) * 0.02,
+            lng: currentPos.lng + (Math.random() - 0.5) * 0.03,
+          }
+        ])
+      })
+    }
+    console.log("speechRecognitionOnClick", showList, markers);
   }, []);
 
   const mapRef = React.useRef();
