@@ -18,6 +18,8 @@
     "date-fns": "^2.27.0",
     "google-map-react": "^2.1.10",
     "moment": "^2.29.1",
+    "primeicons": "^5.0.0",
+    "primereact": "^7.1.0",
     "react": "^17.0.2",
     "react-big-calendar": "^0.38.2",
     "react-bootstrap": "^2.1.0",

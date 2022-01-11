@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useState } from 'react/cjs/react.development';
-import { Button, Row, Col, Container } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
+import { Button } from 'primereact/button'
 
 // const ENDPOINT = "http://127.0.0.1:5000";
 const ENDPOINT = "https://automation-backend-server.herokuapp.com/";
@@ -74,7 +75,7 @@ function SpeechRecognitionApp(props) {
             <Container>
                 <Row>
                     <Col>
-                        <Button variant="outline-primary" onClick={getUserInput}>Speak</Button>
+                        <Button icon={'fas fa-microphone-alt'} className={'p-button-rounded p-button-info p-button-outlined'} onClick={getUserInput}/>
                     </Col>
                     {/* <Col xs={10}>
                         <button onClick={() => SpeechRecognition.stopListening()}> Stop </button>

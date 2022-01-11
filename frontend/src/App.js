@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import formatRelative from "date-fns/formatRelative";
-import { Button, Row, Col, Modal } from 'react-bootstrap';
+import { Row, Col, Modal } from 'react-bootstrap';
+import { Button } from 'primereact/button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
 import SpeechRecognitionApp from './SpeechRecognitionApp';
@@ -160,9 +161,17 @@ export default function App() {
                 position={{ lat: marker.lat, lng: marker.lng }}
               />))}
           </GoogleMap>
-          <Button as={Col} variant="primary">Home</Button>
-          <Button as={Col} variant="success" className="mx-2">Map</Button>
-          <Button as={Col} variant="secondary" onClick={handleShow}>Calendar</Button>
+          <div className="p-fluid p-formgrid p-grid p-mt-1">
+            <div className="p-col">
+              <Button label={'Home'} icon={'pi pi-fw pi-home'} className={'p-button-info p-button-lg'} />
+            </div>
+            <div className="p-col">
+              <Button label={'Map'} icon={'fas fa-map-marked-alt'} className={'p-button-info p-button-lg'} />
+            </div>
+            <div className="p-col">
+              <Button label={'Calendar'} icon={'pi pi-fw pi-calendar'} className={'p-button-info p-button-lg'} onClick={handleShow}/>
+            </div>
+          </div>
 
           <Modal show={show} onHide={handleClose} fullscreen={true}>
             <Modal.Header closeButton>
