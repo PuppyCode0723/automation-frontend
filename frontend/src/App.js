@@ -76,25 +76,42 @@ export default function App() {
       setMarkers([
         {
           time: new Date(new Date().getTime()),
-          lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
-          lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+          lat: 25.043159497598104,
+          lng: 121.56703883686964,
         },
         {
           time: new Date(new Date().getTime() + 1000),
-          lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
-          lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+          lat: 25.043814984512316,
+          lng: 121.57192250303466,
         },
         {
           time: new Date(new Date().getTime() + 2000),
-          lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
-          lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
-        },
-        {
-          time: new Date(new Date().getTime() + 3000),
-          lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
-          lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+          lat: 25.034655078918803,
+          lng: 121.57635280451973,
         }
       ])
+      // setMarkers([
+      //   {
+      //     time: new Date(new Date().getTime()),
+      //     lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
+      //     lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+      //   },
+      //   {
+      //     time: new Date(new Date().getTime() + 1000),
+      //     lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
+      //     lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+      //   },
+      //   {
+      //     time: new Date(new Date().getTime() + 2000),
+      //     lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
+      //     lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+      //   },
+      //   {
+      //     time: new Date(new Date().getTime() + 3000),
+      //     lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
+      //     lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+      //   }
+      // ])
     } else {
       setMarkers(
       markers.map(x => {
