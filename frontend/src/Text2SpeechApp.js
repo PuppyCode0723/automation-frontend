@@ -17,7 +17,7 @@ class Text2SpeechApp extends Component {
             supported: true,
             lang: props.lang || "zh-TW",
             text:
-                "Test message",
+                "",
             prevText:
                 "",
             autoPlay: false,

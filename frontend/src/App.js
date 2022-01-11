@@ -70,39 +70,45 @@ export default function App() {
         title: "進廠維修",
       } 
     ]);
-    console.log("defaultPosition",defaultPosition)
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        const currentPos = {
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
-        };
-        setMarkers([
-          {
-            time: new Date(new Date().getTime()),
-            lat: currentPos.lat + (Math.random() - 0.5) * 0.02,
-            lng: currentPos.lng + (Math.random() - 0.5) * 0.03,
-          },
-          {
-            time: new Date(new Date().getTime() + 1000),
-            lat: currentPos.lat + (Math.random() - 0.5) * 0.02,
-            lng: currentPos.lng + (Math.random() - 0.5) * 0.03,
-          },
-          {
-            time: new Date(new Date().getTime() + 2000),
-            lat: currentPos.lat + (Math.random() - 0.5) * 0.02,
-            lng: currentPos.lng + (Math.random() - 0.5) * 0.03,
-          },
-          {
-            time: new Date(new Date().getTime() + 3000),
-            lat: currentPos.lat + (Math.random() - 0.5) * 0.02,
-            lng: currentPos.lng + (Math.random() - 0.5) * 0.03,
-          }
-        ])
+    console.log("markers", markers)
+    if (markers.length === 0) {
+      setMarkers([
+        {
+          time: new Date(new Date().getTime()),
+          lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
+          lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+        },
+        {
+          time: new Date(new Date().getTime() + 1000),
+          lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
+          lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+        },
+        {
+          time: new Date(new Date().getTime() + 2000),
+          lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
+          lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+        },
+        {
+          time: new Date(new Date().getTime() + 3000),
+          lat: defaultPosition.lat + (Math.random() - 0.5) * 0.02,
+          lng: defaultPosition.lng + (Math.random() - 0.5) * 0.03,
+        }
+      ])
+    } else {
+      setMarkers(
+      markers.map(x => {
+        x.distance = Math.sqrt(Math.pow(x.lat - defaultPosition.lat, 2) + Math.pow(x.lng - defaultPosition.lng, 2))
+        return x
+      }))
+      let nearestMarker = markers[0]; 
+      markers.forEach(marker => {
+        if (marker.distance < nearestMarker.distance) {
+          nearestMarker = marker;
+        }
       })
+      setMarkers([nearestMarker]);
     }
-    console.log("speechRecognitionOnClick", showList, markers);
-  }, []);
+  }, [defaultPosition, markers]);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -155,8 +161,8 @@ export default function App() {
               />))}
           </GoogleMap>
           <Button as={Col} variant="primary">Home</Button>
-          <Button as={Col} variant="secondary" onClick={handleShow} className="mx-2">Calendar</Button>
-          <Button as={Col} variant="success">Event</Button>
+          <Button as={Col} variant="success" className="mx-2">Map</Button>
+          <Button as={Col} variant="secondary" onClick={handleShow}>Calendar</Button>
 
           <Modal show={show} onHide={handleClose} fullscreen={true}>
             <Modal.Header closeButton>
