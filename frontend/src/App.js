@@ -69,6 +69,8 @@ export default function App() {
         end: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)),
         start: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)),
         title: "進廠維修",
+        allDay: true,
+        textColor: 'rgba(255,255,255,1.0)',
       } 
     ]);
     console.log("markers", markers)
