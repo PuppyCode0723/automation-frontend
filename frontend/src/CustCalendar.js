@@ -62,6 +62,11 @@ function CustCalendar(props) {
         end: '2022-01-02',
         title: '健身房健身',
         allDay: false,
+    }, {
+        start: '2021-01-27',
+        end: '2021-01-27',
+        title: '指派勞工半夜加班',
+        allDay: false,
     }
     ]);
 
@@ -97,7 +102,7 @@ function CustCalendar(props) {
                     // ]
                     arr
                 }
-                displayEventTime={false}
+                displayEventTime={false}                
             />
         </div>
     )
