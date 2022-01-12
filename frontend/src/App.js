@@ -65,7 +65,7 @@ export default function App() {
   const speechRecognitionOnClick = React.useCallback((event) => {
     setShowList([
       {
-        description: "維修進場Desc",
+        description: "進廠維修",
         end: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)),
         start: new Date(new Date().getTime() + (24 * 60 * 60 * 1000)),
         title: "進廠維修",
