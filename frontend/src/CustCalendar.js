@@ -17,9 +17,19 @@ function CustCalendar(props) {
         end: '2022-01-07',
         allDay: false,
     }, {
+        title: '照顧毛小孩',
+        start: '2022-01-07',
+        end: '2022-01-07',
+        allDay: false,
+    }, {
         title: '去礁溪泡溫泉',
         start: '2022-01-09',
         end: '2022-01-09',
+        allDay: false,
+    }, {
+        title: '陽明山泡溫泉',
+        start: '2022-01-10',
+        end: '2022-01-10',
         allDay: false,
     }, {
         title: '陪客戶看電影',
@@ -27,12 +37,6 @@ function CustCalendar(props) {
         end: '2022-01-10',
         allDay: false,
     }, {
-        title: '去陽明山泡溫泉',
-        start: '2022-01-11',
-        end: '2022-01-11',
-        allDay: false,
-    },
-    {
         start: '2021-12-31',
         end: '2021-12-31',
         title: '101看煙火秀',
@@ -45,7 +49,7 @@ function CustCalendar(props) {
     }, {
         start: '2021-12-29',
         end: '2021-12-29',
-        title: '陪客戶打高爾夫球',
+        title: '去客戶家維修水管',
         allDay: false,
     }, {
         start: '2021-12-30',
@@ -63,9 +67,34 @@ function CustCalendar(props) {
         title: '健身房健身',
         allDay: false,
     }, {
-        start: '2021-01-27',
-        end: '2021-01-27',
-        title: '指派勞工半夜加班',
+        start: '2022-01-22',
+        end: '2022-01-22',
+        title: '半夜關切員工工作進度',
+        allDay: false,
+    }, {
+        start: '2022-01-12',
+        end: '2022-01-12',
+        title: 'Talent Show 倒數一天，好期待明天喔!!!!',
+        allDay: false,
+    }, {
+        start: '2022-01-14',
+        end: '2022-01-14',
+        title: '去蘆洲跟客戶討論設計圖',
+        allDay: false,
+    }, {
+        start: '2022-01-14',
+        end: '2022-01-14',
+        title: '去五金行補充材料',
+        allDay: false,
+    }, {
+        start: '2022-01-11',
+        end: '2022-01-11',
+        title: '開車Veryca去烏石港衝浪',
+        allDay: false,
+    }, {
+        start: '2022-01-15',
+        end: '2022-01-15',
+        title: '龍舟隊團練',
         allDay: false,
     }
     ]);
@@ -102,7 +131,7 @@ function CustCalendar(props) {
                     // ]
                     arr
                 }
-                displayEventTime={false}                
+                displayEventTime={false}
             />
         </div>
     )
